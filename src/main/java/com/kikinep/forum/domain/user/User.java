@@ -1,6 +1,7 @@
 package com.kikinep.forum.domain.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -67,5 +68,19 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public void updateUser(UserUpdateData data) {
+        if (data.username() != null) {
+            this.username = data.username();
+        }
+
+        if (data.email() != null) {
+            this.email = data.email();
+        }
+
+        if (data.password() != null) {
+            this.password = new BCryptPasswordEncoder().encode(data.password());
+        }
     }
 }

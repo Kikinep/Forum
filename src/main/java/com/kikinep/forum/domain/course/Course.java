@@ -24,4 +24,14 @@ public class Course {
         this.name = data.name();
         this.category = data.category();
     }
+
+    public void updateCourse(CourseUpdateData data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+
+        if (data.category() != null) {
+            this.category = data.category();
+        }
+    }
 }
